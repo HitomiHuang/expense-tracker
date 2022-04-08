@@ -37,7 +37,9 @@
       </a>
       <div class="d-flex align-items-center">
         <a class="ms-3" style="width: 60px; text-decoration:none;" href="./records/{{ this._id }}/edit">修改</a>
-        <a class="" style="width: 60px; text-decoration:none;" href="#">刪除</a>
+        <form action="./records/{{ this._id }}/?_method=DELETE" method="POST" >
+            <button type="submit" class="btn btn-link" style="width: 60px; text-decoration:none;">刪除</button>  
+        </form>
       </div>
     </div>
     
