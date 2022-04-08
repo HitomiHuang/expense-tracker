@@ -17,7 +17,10 @@ router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .lean()
-    .then((record) => res.render('edit', { record }))
+    .then((record) => {
+      record.date = record.date.toJSON().toString().slice(0, 10)
+      res.render('edit', { record })
+    })
     .catch(error => console.log(error))
 })
 
