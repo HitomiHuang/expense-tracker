@@ -20,25 +20,28 @@
     {{!-- <span>{{ totalAmount }}</span> --}}
   </div>
 
-  <ul class="list-group">
+  <div class="list-group">
     {{#each records}}
-      <li class="list-group-item">
-        <i class="fa-solid fa-house"></i>
-        <span>{{ this.name }}</span>
-        <span>{{ this.date }}</span>
-        <span>{{ this.amount }}</span>
-        <button class="btn btn-primary">修改</button>
-        <button class="btn btn-primary">刪除</button>
-      </li>
+    <div class="d-flex">
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between" aria-current="true">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-house"></i>
+            <div class="d-flex row">
+              <span class="ms-3">{{ this.name }}</span>
+              <span class="ms-3">{{ this.date }}</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <span class="ms-3">{{ this.amount }}</span>
+          </div>
+      </a>
+      <div class="d-flex align-items-center">
+        <a class="ms-3" style="width: 60px; text-decoration:none;" href="./records/{{ this._id }}/edit">修改</a>
+        <a class="" style="width: 60px; text-decoration:none;" href="#">刪除</a>
+      </div>
+    </div>
+    
     {{/each}}
-    <li class="list-group-item">
-      <i class="fa-solid fa-house"></i>
-      <span>午餐</span>
-      <span>60</span>  
-      <button class="btn btn-primary">修改</button>
-      <button class="btn btn-primary">刪除</button>   
-    </li>
-
-  </ul>
+  </div>
   <a class="btn btn-primary mt-3" href="./records/new">新增支出</a>
 </div>

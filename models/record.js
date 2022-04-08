@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Dateonly = require('mongoose-dateonly')(mongoose)
 const Schema = mongoose.Schema
 const recordSchema = new Schema({
-  recordId: {
+  id: {
     type: Number,
-    index: true 
+    
   },
   name: {
     type: String,
@@ -15,7 +15,7 @@ const recordSchema = new Schema({
     require: true
   },
   date:{
-    type: Dateonly,
+    type: Date,
     require: true
   },
   category: {
