@@ -8,10 +8,9 @@ router.get('/', (req, res) => {
     .then(records => {
       let totalAmount = 0
       records.forEach(record => {
-        const recordId = record.categoryId
-        Category.findOne({ recordId })
+        const recordId = record.category
+        Category.findOne({ _id: recordId })
           .then(category => {
-            console.log(category)
             record.icon = category.icon
           })
         record.date = record.date.toJSON().toString().slice(0, 10)       
