@@ -7,7 +7,7 @@ const categorySchema = new Schema({
   },
   icon: {
     type: String,
-    default: '<i class="fa-solid fa-pen"></i>'
+    default: 'fa-solid fa-pen'
   },
   unicode: {
     type: String,

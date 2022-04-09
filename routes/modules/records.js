@@ -11,7 +11,6 @@ router.get('/new', (req, res) => {
       data.forEach(item => {
         category.push(item)
       })
-      console.log(category)
       res.render('new', { category })   
     })
 })

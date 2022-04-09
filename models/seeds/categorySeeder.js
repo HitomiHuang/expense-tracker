@@ -4,27 +4,27 @@ const db = require('../../config/mongoose')
 const SEED_CATEGORY = [
   {
     name: '家居物業',
-    icon: '<i class="fa-solid fa-house"></i>',
+    icon: 'fa-solid fa-house',
     unicode: '&#xf015;'
   },
   {
     name: '交通出行',
-    icon: '<i class="fa-solid fa-van-shuttle"></i>',
+    icon: 'fa-solid fa-van-shuttle',
     unicode: '&#xf5b6;'
   },
   {
     name: '休閒娛樂',
-    icon: '<i class="fa-solid fa-face-grin-beam"></i>',
+    icon: 'fa-solid fa-face-grin-beam',
     unicode: '&#xf582;'
   },
   {
     name: '餐飲食品',
-    icon: '<i class="fa-solid fa-utensils"></i>',
+    icon: 'fa-solid fa-utensils',
     unicode: '&#xf2e7;'
   },
   {
     name: '其他',
-    icon: '<i class="fa-solid fa-pen"></i>',
+    icon: 'fa-solid fa-pen',
     unicode: '&#xf304;'
   },
 ]
