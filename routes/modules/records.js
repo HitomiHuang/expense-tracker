@@ -14,23 +14,23 @@ router.get('/new', (req, res) => {
       res.render('new', { category })   
     })
 })
-
-// router.get('/:id', (req, res) => {
-//   const id = req.params.id
-//   return Record.findById(id)
-//     .lean()
-//     .then((record) => res.render('detail', {record}))
-//     .catch(error => console.log(error))
-// })
-
 router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
   const userId = req.user._id
+  const categories = []
+
   return Record.findOne({ _id, userId })
     .lean()
     .then((record) => {
-      record.date = record.date.toJSON().toString().slice(0, 10)
-      res.render('edit', { record })
+      const categoryId = record.categoryId
+      return Category.find()
+          .lean()
+          .then(categories => {
+            const category = categories.filter(category => category._id.equals(categoryId))[0]
+            
+            record.date = record.date.toJSON().toString().slice(0, 10)
+            return res.render('edit', { record, category, categories })
+          })
     })
     .catch(error => console.log(error))
 })
@@ -53,8 +53,8 @@ router.put('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.user._id
-  const { name, date, category, amount } = req.body
-  return Record.create({ name, date, category, amount, userId })
+  const { name, date, categoryId, amount } = req.body
+  return Record.create({ name, date, categoryId, amount, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

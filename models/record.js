@@ -16,9 +16,6 @@ const recordSchema = new Schema({
     type: Date,
     require: true
   },
-  category: {
-    type: String
-  },
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',

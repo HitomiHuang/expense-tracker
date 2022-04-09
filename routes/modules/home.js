@@ -9,12 +9,12 @@ router.get('/', (req, res) => {
     .then(records => {
       let totalAmount = 0
       records.forEach(record => {
-        const recordId = record.category
+        const recordId = record.categoryId
         Category.findOne({ _id: recordId })
           .then(category => {
-            // if(category.icon) {
-            //   record.icon = category.icon
-            // }          
+            if(category.icon) {
+              record.icon = category.icon
+            }          
           })
         record.date = record.date.toJSON().toString().slice(0, 10)       
         totalAmount += record.amount
