@@ -1,9 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
+const Category = require('../../models/category')
 
 router.get('/new', (req, res) => {
-  res.render('new')
+  const category = []
+  Category.find()
+    .lean()
+    .then(data => {
+      data.forEach(item => {
+        category.push(item)
+      })
+      console.log(category)
+      res.render('new', { category })   
+    })
 })
 
 // router.get('/:id', (req, res) => {
@@ -13,6 +23,7 @@ router.get('/new', (req, res) => {
 //     .then((record) => res.render('detail', {record}))
 //     .catch(error => console.log(error))
 // })
+
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)

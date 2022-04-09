@@ -16,7 +16,12 @@
     <div class="row mb-3">
       <label for="inputCategory" class="col-sm-2 col-form-label">類別：</label>
       <div class="col-sm-10">
-        <input  class="form-control" id="inputCategory" name="category">
+        <select class="form-select" aria-label="Default select example" style="font-family:'FontAwesome', 'Ariel';">
+          <option value='' disabled selected hidden>Select</option>
+          {{#each category}}
+            <option value="{{ this._id }}">{{{ this.unicode }}}  {{ this.name }}</option>
+          {{/each}}
+        </select>
       </div>
     </div>
     <div class="row mb-3">

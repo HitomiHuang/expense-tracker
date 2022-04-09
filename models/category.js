@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const categorySchema = new Schema({
-  categoryId: {
-    type: Number,
-    required: true
-  },
   name: {
     type: String,
     required: true
+  },
+  icon: {
+    type: String,
+    default: '<i class="fa-solid fa-pen"></i>'
+  },
+  unicode: {
+    type: String,
+    default: '&#xf304;'
   }
 })
 
