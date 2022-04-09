@@ -1,4 +1,5 @@
 const express = require('express')
+const usePassport = require('./config/passport')
 const routes = require('./routes')
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
@@ -11,6 +12,7 @@ app.set('view engine', 'hbs')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+usePassport(app)
 app.use(routes)
 
 
