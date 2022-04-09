@@ -3,7 +3,8 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 router.get('/', (req, res) => {
-  Record.find()
+  const userId = req.user._id
+  Record.find({ userId })
     .lean()
     .then(records => {
       let totalAmount = 0
@@ -11,7 +12,9 @@ router.get('/', (req, res) => {
         const recordId = record.category
         Category.findOne({ _id: recordId })
           .then(category => {
-            record.icon = category.icon
+            // if(category.icon) {
+            //   record.icon = category.icon
+            // }          
           })
         record.date = record.date.toJSON().toString().slice(0, 10)       
         totalAmount += record.amount
