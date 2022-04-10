@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+const { options } = require('./routes')
 const app = express()
 if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -32,7 +33,6 @@ app.use((req, res, next) => {
   next()
 })
 app.use(routes)
-
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)

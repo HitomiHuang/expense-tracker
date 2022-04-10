@@ -17,8 +17,6 @@ router.get('/new', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
   const userId = req.user._id
-  const categories = []
-
   return Record.findOne({ _id, userId })
     .lean()
     .then((record) => {
@@ -38,12 +36,12 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const { name, date, category, amount} = req.body
+  const { name, date, categoryId, amount} = req.body
   return Record.findOne({ _id, userId })
     .then(record => {
       record.name = name
       record.date = date
-      record.category = category
+      record.categoryId = categoryId
       record.amount = amount
       return record.save()
     })

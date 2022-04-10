@@ -1,10 +1,18 @@
 <div class="container mt-3" style="max-width: 750px;"> 
-  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected disabled hidden>類別</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
+  <div class="dropdown ">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+      aria-expanded="false" value="0">
+      類別： {{ filterName }}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <form action="/">
+        <li><button class="dropdown-item" type="submit" name="categoryFilter" value="0">全部</button></li>
+        {{#each categories}}
+        <li><button class="dropdown-item" type="submit" name="categoryFilter" value="{{this._id}}"><i class="{{ this.icon }}"></i>{{ this.name }}</button></li>
+        {{/each}}
+      </form>
+    </ul>
+  </div>
   <div class="mt-3">
     <span>總金額:</span>
     <span>{{ totalAmount }}</span>
@@ -13,7 +21,7 @@
   <div class="list-group">
     {{#each records}}
     <div class="d-flex">
-      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between" aria-current="true">
+      <li class="list-group-item list-group-item-action d-flex justify-content-between" aria-current="true">
           <div class="d-flex align-items-center">
             <i class="{{ this.icon }}"></i>
             <div class="d-flex row">
@@ -24,7 +32,7 @@
           <div class="d-flex align-items-center">
             <span class="ms-3">{{ this.amount }}</span>
           </div>
-      </a>
+      </li>
       <div class="d-flex align-items-center">
         <a class="ms-3" style="width: 60px; text-decoration:none;" href="./records/{{ this._id }}/edit">修改</a>
         <form action="./records/{{ this._id }}/?_method=DELETE" method="POST" >
