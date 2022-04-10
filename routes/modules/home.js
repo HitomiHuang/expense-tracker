@@ -13,19 +13,25 @@ router.get('/', (req, res) => {
                      .lean()
                      .then((categories) => {
                        let filterRecord = records
-                       let totalAmount = 0              
-                                           
+                       let totalAmount = 0
+                       let filterAmount = 0
+                       let amountArray = [] 
+                                                             
                        records.forEach(record => {
                          const categoryId = record.categoryId  
                          record.icon = categories.filter(category => categoryId.equals(category._id))[0].icon
                          record.date = record.date.toJSON().toString().slice(0, 10)
                          totalAmount += record.amount
                        })
-                       if (filterValue) {   
-                         if(filterValue !== "0"){
+
+                       if (filterValue) {
+                         if (filterValue !== "0") {
                            filterName = categories.filter(category => category._id.equals(filterValue))[0].name
                            filterRecord = records.filter(item => item.categoryId.equals(filterValue))
-                         } 
+                           amountArray = records.filter(item => item.categoryId.equals(filterValue))
+                           amountArray.forEach(item => filterAmount += item.amount)
+                           totalAmount = filterAmount
+                         }
                        }
                         return res.render('index', { records: filterRecord, totalAmount, categories, filterName })
                      })
