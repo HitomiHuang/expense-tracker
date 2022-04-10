@@ -19,7 +19,7 @@
 
 3. 安裝相關套件
    ```
-      npm install
+   npm install
    ```
 
 4. 安裝完畢，輸入以下指令，運行專案
@@ -37,9 +37,9 @@
    ```
 7. 測試種子資料
 
-  | Name | Email | Password |
-  | ------------- | :---: | -------- |
-  | user          | root@example.com| 12345678  |
+    | Name | Email | Password |
+    | ------------- | :---: | -------- |
+    | user          | root@example.com| 12345678  |
 
 
 ### 開發工具
