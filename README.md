@@ -35,11 +35,11 @@
    ```bash
    npm run seed
    ```
-8. 測試種子資料
+7. 測試種子資料
 
-| Name | Email | Password |
-| ------------- | :---: | -------- |
-| user          | root@example.com| 12345678  |
+  | Name | Email | Password |
+  | ------------- | :---: | -------- |
+  | user          | root@example.com| 12345678  |
 
 
 ### 開發工具
