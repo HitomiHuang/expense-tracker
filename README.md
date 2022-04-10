@@ -31,6 +31,15 @@
    ```bash
    App is running on http://localhost:3000
    ```
+6. 建立種子資料(類別、假帳號、假支出)
+   ```bash
+   npm run seed
+   ```
+8. 測試種子資料
+
+| Name | Email | Password |
+| ------------- | :---: | -------- |
+| user          | root@example.com| 12345678  |
 
 
 ### 開發工具
