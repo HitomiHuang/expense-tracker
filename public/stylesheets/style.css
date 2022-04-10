@@ -1,0 +1,40 @@
+body {
+  font-family: 'Lato', 'Noto Sans TC', 'sans-serif';
+}
+.nav-title{
+  font-weight: bold;
+}
+.amount-title{
+  font-size: 30px;
+}
+.total-amount{
+  color: #EC683F;
+  font-size: 100px;
+  
+}
+.category i {
+  color:#8FD1DF;
+  font-size:30px;
+}
+.new-expense{
+  width: 150px;
+  background-color: #EC683F;
+  border: #EC683F;
+}
+.new-expense:hover{
+  border: #d6542d;
+  background-color: #d6542d;
+}
+
+.login-button{
+  background-color: #EC683F;
+  border: #EC683F;
+}
+.login-button:hover{
+  border: #d6542d;
+  background-color: #d6542d;
+}
+.menu-btn{
+  color: black;
+  background-color: white;
+}
