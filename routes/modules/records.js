@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+const user = require('../../models/user')
 
 router.get('/new', (req, res) => {
   const category = []
@@ -24,8 +25,7 @@ router.get('/:id/edit', (req, res) => {
       return Category.find()
           .lean()
           .then(categories => {
-            const category = categories.filter(category => category._id.equals(categoryId))[0]
-            
+            const category = categories.filter(category => category._id.equals(categoryId))[0]           
             record.date = record.date.toJSON().toString().slice(0, 10)
             return res.render('edit', { record, category, categories })
           })
@@ -36,13 +36,10 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const { name, date, categoryId, amount} = req.body
+  const editRecordData = req.body
   return Record.findOne({ _id, userId })
     .then(record => {
-      record.name = name
-      record.date = date
-      record.categoryId = categoryId
-      record.amount = amount
+      record = Object.assign(record, editRecordData)
       return record.save()
     })
     .then(() => res.redirect('/'))
